@@ -1,0 +1,6 @@
+framework module Pods_AccountsDummy {
+  umbrella header "Pods-AccountsDummy-umbrella.h"
+
+  export *
+  module * { export * }
+}

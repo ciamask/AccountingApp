@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="CGs-aI-Ito" customClass="TransactionTableViewCell" customModule="TestApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="CGs-aI-Ito" id="Ffi-YM-07F">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="5Gu-rR-cUa" userLabel="transactionDetailStackView">
+                        <rect key="frame" x="20" y="1.5" width="374" height="41"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="XaS-9f-bWL" userLabel="transactionLabelStack">
+                                <rect key="frame" x="0.0" y="0.0" width="189" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nuw-Zx-HuZ" userLabel="transactionTypeLabel">
+                                        <rect key="frame" x="0.0" y="0.0" width="46.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remarks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbR-8A-JVp" userLabel="remarksLabel">
+                                        <rect key="frame" x="0.0" y="20.5" width="66" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpz-vJ-lFk" userLabel="transactionAmount">
+                                <rect key="frame" x="209" y="0.0" width="165" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="ShJ-Eo-077"/>
+                <constraints>
+                    <constraint firstItem="5Gu-rR-cUa" firstAttribute="leading" secondItem="ShJ-Eo-077" secondAttribute="leading" constant="20" id="2rx-Ux-uWO"/>
+                    <constraint firstItem="ShJ-Eo-077" firstAttribute="trailing" secondItem="5Gu-rR-cUa" secondAttribute="trailing" constant="20" id="8PB-bH-Yh2"/>
+                    <constraint firstItem="5Gu-rR-cUa" firstAttribute="centerX" secondItem="Ffi-YM-07F" secondAttribute="centerX" id="Qb9-pO-XB3"/>
+                    <constraint firstItem="5Gu-rR-cUa" firstAttribute="centerY" secondItem="Ffi-YM-07F" secondAttribute="centerY" id="xms-1G-4sk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="remarksLabel" destination="qbR-8A-JVp" id="sXA-UU-RK1"/>
+                <outlet property="transactionAmount" destination="Xpz-vJ-lFk" id="82C-MI-u39"/>
+                <outlet property="transactionTypeLabel" destination="Nuw-Zx-HuZ" id="7aL-1s-MBI"/>
+            </connections>
+            <point key="canvasLocation" x="240.57971014492756" y="48.883928571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

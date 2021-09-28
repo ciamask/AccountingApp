@@ -1,0 +1,6 @@
+framework module Pods_AccountsDummyTests {
+  umbrella header "Pods-AccountsDummyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
