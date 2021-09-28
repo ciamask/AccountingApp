@@ -9,14 +9,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-protocol NetworkHandler {
-
-//    func getBalance(onCompletion: @escaping (BalanceModel) -> ())
-    func getTransactionData(onCompletion: @escaping (TransactionsModel) -> ())
-    func postCreditBalance(amount: Int, remarks: String, onCompletion: @escaping (String) -> ())
-    func postDebitBalance(amount: Int, remarks: String, onCompletion: @escaping (String) -> ())
+protocol TransactionNetworkHandler {
+    func postCreditBalance(amount: Int, remarks: String) -> Observable<String>
+    func postDebitBalance(amount: Int, remarks: String) -> Observable<String>
 }
 
-protocol HomeNetworkHandler {
+protocol HomeNetworkHandler { //->HomeViewModel implemations DefaultHomeviewModel
     func getBalance() -> Observable<BalanceModel>
+    func getTransactionData() -> Observable<TransactionsModel>
 }

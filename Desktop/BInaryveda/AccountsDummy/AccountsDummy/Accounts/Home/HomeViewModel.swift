@@ -17,4 +17,10 @@ class HomeViewModel : HomeNetworkHandler {
         return model
     }
     
+    func getTransactionData() -> Observable<TransactionsModel> {
+        let resource = Resource<TransactionsModel>(url: URL(string:ApiConstants.baseUrl + ApiConstants.getTransactions)!)
+        let model = URLRequest.load(resource: resource)
+        return model
+    }
+    
 }

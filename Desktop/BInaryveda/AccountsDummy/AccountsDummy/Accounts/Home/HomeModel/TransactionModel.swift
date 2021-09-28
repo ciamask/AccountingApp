@@ -21,3 +21,9 @@ struct Transaction: Codable {
     }
 }
 
+extension TransactionsModel {
+    static var empty: TransactionsModel {
+        return TransactionsModel(transactions: [])
+    }
+}
+

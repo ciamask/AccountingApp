@@ -27,6 +27,7 @@
 		0361D12E2702D43400D6BF72 /* URL+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361D12D2702D43400D6BF72 /* URL+ext.swift */; };
 		0361D1302702D69D00D6BF72 /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361D12F2702D69D00D6BF72 /* ApiConstants.swift */; };
 		0361D1322702D8F400D6BF72 /* SwinjectStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361D1312702D8F400D6BF72 /* SwinjectStoryboard.swift */; };
+		0361D1472703297B00D6BF72 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0361D1462703297B00D6BF72 /* TransactionViewModel.swift */; };
 		303D743E9E830C2D27635100 /* Pods_AccountsDummy_AccountsDummyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A1A9C4AAE961BA47AC2ECA6 /* Pods_AccountsDummy_AccountsDummyUITests.framework */; };
 		9209BA7A6FC846EB73FAE133 /* Pods_AccountsDummy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91229DD6EC9A1798D21C80F4 /* Pods_AccountsDummy.framework */; };
 		9E548B43F23B8A30F028B5A0 /* Pods_AccountsDummyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8A85052C5E6004817E8D54 /* Pods_AccountsDummyTests.framework */; };
@@ -76,6 +77,7 @@
 		0361D12D2702D43400D6BF72 /* URL+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ext.swift"; sourceTree = "<group>"; };
 		0361D12F2702D69D00D6BF72 /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		0361D1312702D8F400D6BF72 /* SwinjectStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwinjectStoryboard.swift; sourceTree = "<group>"; };
+		0361D1462703297B00D6BF72 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		14B3EACE630E10F55ABE0A03 /* Pods-AccountsDummyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountsDummyTests.release.xcconfig"; path = "Target Support Files/Pods-AccountsDummyTests/Pods-AccountsDummyTests.release.xcconfig"; sourceTree = "<group>"; };
 		19438D4C0CAA0F87F769A54B /* Pods-AccountsDummy-AccountsDummyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountsDummy-AccountsDummyUITests.release.xcconfig"; path = "Target Support Files/Pods-AccountsDummy-AccountsDummyUITests/Pods-AccountsDummy-AccountsDummyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		3443A1A76AD7038F1BDCB80D /* Pods-AccountsDummy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AccountsDummy.debug.xcconfig"; path = "Target Support Files/Pods-AccountsDummy/Pods-AccountsDummy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 			children = (
 				0361D1102702C92900D6BF72 /* CreditDebitModel.swift */,
 				0361D1112702C92900D6BF72 /* TransactionViewController.swift */,
+				0361D1462703297B00D6BF72 /* TransactionViewModel.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				0361D0DF2702C8FA00D6BF72 /* AppDelegate.swift in Sources */,
 				0361D0E12702C8FA00D6BF72 /* SceneDelegate.swift in Sources */,
 				0361D12B2702C92900D6BF72 /* NetworkHandler.swift in Sources */,
+				0361D1472703297B00D6BF72 /* TransactionViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

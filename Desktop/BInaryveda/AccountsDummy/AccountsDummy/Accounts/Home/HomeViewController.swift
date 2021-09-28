@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureView()
+        configureTableView()
     }
     
     @IBAction func addButtonClicked(_ sender: Any) {
@@ -53,6 +54,24 @@ class HomeViewController: UIViewController {
         balance.map { "$ \($0.balance ?? 0)" }
             .drive(self.balanceAmount.rx.text)
             .disposed(by: disposeBag)
+    }
+    
+    private func configureTableView() {
+        let transaction = homeViewModel.getTransactionData()
+            .observe(on: MainScheduler.instance)
+            .retry(1)
+            .catch { [weak self] error in
+                self?.showAlert(with: error.localizedDescription)
+                return Observable.just(TransactionsModel.empty)
+            }.asDriver(onErrorJustReturn: TransactionsModel.empty)
+        
+        transaction.map({ model in
+            self.transactionData = model.transactions ?? []
+            self.transactionTableView.reloadData()
+        }).drive()
+        .disposed(by: disposeBag)
+        
+        self.transactionTableView.reloadData()
     }
     
     private func showAlert(with msg: String){

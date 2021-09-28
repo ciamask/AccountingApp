@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class TransactionViewController: UIViewController {
     
-    var networkHandler: NetworkHandler!
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var remarksTextField: UITextField!
+    
+    var transactionViewModel : TransactionNetworkHandler!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,12 +28,17 @@ class TransactionViewController: UIViewController {
         if remark.isEmpty && amount.isEmpty {
             self.showAlert(with: "Enter All Data")
         } else {
-            networkHandler.postCreditBalance(amount: Int(amount) ?? 0, remarks: remark) { [weak self] model in
-                guard let self = self else {return}
-                DispatchQueue.main.async { [weak self]  in
-                    self?.showAlert(with: model)
-                }
-            }
+           let credit = transactionViewModel.postCreditBalance(amount: Int(amount) ?? 0, remarks: remark)
+            .observe(on: MainScheduler.instance)
+            .catch { [weak self] error in
+                self?.showAlert(with: error.localizedDescription)
+                return Observable.just("")
+            }.asDriver(onErrorJustReturn: "Error")
+        
+            credit.drive()
+            .disposed(by: disposeBag)
+            
+            navigationController?.popViewController(animated: true)
         }
     }
     
@@ -39,13 +48,18 @@ class TransactionViewController: UIViewController {
         if remark.isEmpty && amount.isEmpty {
             self.showAlert(with: "Enter All Data")
         } else {
-            networkHandler.postCreditBalance(amount: Int(amount) ?? 0, remarks: remark) { [weak self] model in
-                guard let self = self else {return}
-                DispatchQueue.main.async { [weak self] in
-                    self?.showAlert(with: model)
-                }
-            }
-        }
+            let credit = transactionViewModel.postDebitBalance(amount: Int(amount) ?? 0, remarks: remark)
+             .observe(on: MainScheduler.instance)
+             .catch { [weak self] error in
+                self?.showAlert(with: error.localizedDescription)
+                 return Observable.just("")
+             }.asDriver(onErrorJustReturn: "Error")
+         
+             credit.drive()
+             .disposed(by: disposeBag)
+            
+            navigationController?.popViewController(animated: true)
+         }
     }
     
     private func showAlert(with msg: String){

@@ -22,7 +22,30 @@ extension URLRequest {
             //gives out response of type HTTPURLResponse
             .flatMap { url -> Observable<(response: HTTPURLResponse, data: Data)> in
                 var request = URLRequest(url: url)
+                request.httpMethod = "GET"
                 request.setValue("8918623815", forHTTPHeaderField: "Authorization")
+                return URLSession.shared.rx.response(request: request) //gives response also
+            }.map { response, data -> T in
+                // checking response with status code.
+                if 200..<300 ~= response.statusCode {
+                    return try JSONDecoder().decode(T.self, from: data)
+                } else {
+                    throw RxCocoaURLError.httpRequestFailed(response: response, data: data) // throwing error
+                }
+        }.asObservable()
+    }
+    
+    static func post<T: Decodable>(resource: Resource<T>, params : [String : Any]) -> Observable<T> {
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        
+        return Observable.just(resource.url)
+            //gives out response of type HTTPURLResponse
+            .flatMap { url -> Observable<(response: HTTPURLResponse, data: Data)> in
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.setValue("8918623815", forHTTPHeaderField: "Authorization")
+                request.httpBody = jsonData
                 return URLSession.shared.rx.response(request: request) //gives response also
             }.map { response, data -> T in
                 // checking response with status code.

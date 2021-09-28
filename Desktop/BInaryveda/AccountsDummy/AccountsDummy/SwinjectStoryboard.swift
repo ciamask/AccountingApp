@@ -15,12 +15,12 @@ extension SwinjectStoryboard {
         let swinject = defaultContainer
         
         //Register the protocol and Return Dependency (Class)
-//        swinject.register(NetworkHandler.self, name: "NetworkHandler") { r in
-//            HomeViewModel()
-//        }.inObjectScope(.container)
-        
         swinject.register(HomeNetworkHandler.self, name: "HomeNetworkHandler") { r in
             HomeViewModel()
+        }.inObjectScope(.container)
+        
+        swinject.register(TransactionNetworkHandler.self, name: "TransactionNetworkHandler") { r in
+            TransactionViewModel()
         }.inObjectScope(.container)
         
         //Assiging Required Dependency into ViewController
@@ -28,9 +28,9 @@ extension SwinjectStoryboard {
             viewController.homeViewModel = resolvable.resolve(HomeNetworkHandler.self, name: "HomeNetworkHandler")
         }
         
-//        swinject.storyboardInitCompleted(TransactionViewController.self) { (resolvable, viewController) in
-//            viewController.networkHandler = resolvable.resolve(NetworkHandler.self, name: "NetworkHandler")
-//        }
+        swinject.storyboardInitCompleted(TransactionViewController.self) { (resolvable, viewController) in
+            viewController.transactionViewModel = resolvable.resolve(TransactionNetworkHandler.self, name: "TransactionNetworkHandler")
+        }
     }
     
 }
